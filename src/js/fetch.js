@@ -51,7 +51,7 @@ let getColor = function (id) {
     let element = document.getElementById(id);
     // console.log(element.classList[1]);
     let text = document.getElementById('question');
-    if(text.style.fontFamily.replace('"', '').replace('"', '') === fonts[element.classList[1]])
+    if(text.style.fontFamily.replace(/"/g, '') === fonts[element.classList[1]])
     {
         location = 'index.html';
     }
