@@ -1,0 +1,17 @@
+{
+    "name": "Font Game",
+    "short_name": "Fonts Game",
+    "description": "Guess the fonts",
+    "start_url": "./",
+    "display": "standalone",
+    "orientation": "portrait",
+    "background_color": "#ff6600",
+    "theme_color": "#ff6600",
+    "icons": [
+        {
+            "src": "./images/logo.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        }
+    ]
+}

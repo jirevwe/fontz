@@ -1,0 +1,57 @@
+button.roboto {
+    margin-bottom: 5px;
+    /*color: blue;*/
+    font-family: 'Roboto', sans-serif;
+}
+
+button.open-sans {
+    /*color: red;*/
+    margin-bottom: 5px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+button.droid-serif {
+    margin-bottom: 5px;
+    /*color: green;*/
+    font-family: 'Droid Serif', serif;
+}
+
+button.indie-flower{
+    margin-bottom: 5px;
+    /*color: purple;*/
+    font-family: 'Indie Flower', cursive;
+}
+
+button.lobster{
+    margin-bottom: 5px;
+    /*color: yellow;*/
+    font-family: 'Lobster', cursive;
+}
+
+button.pacifico{
+    margin-bottom: 5px;
+    /*color: cyan;*/
+    font-family: 'Pacifico', cursive;
+}
+
+button.archivo-black {
+    margin-bottom: 5px;
+    /*color: gray;*/
+    font-family: 'Archivo Black', sans-serif;
+}
+
+button.hammersmith-one {
+    margin-bottom: 5px;
+    /*color: firebrick;*/
+    font-family: 'Hammersmith One', sans-serif;
+}
+
+button.poiret-one {
+    margin-bottom: 5px;
+    /*color: saddlebrown;*/
+    font-family: 'Poiret One', cursive;
+}
+
+p.center-text {
+    text-align: center;
+}
