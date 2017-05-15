@@ -43,30 +43,30 @@
     opts.splice(index, 1);
 
     question.style.fontFamily = current[next];
-    option_1.innerHTML = current[next];
+    options[next].innerHTML = current[next];
 
     next = opts.randomElement();
     index = opts.indexOf(next);
     opts.splice(index, 1);
 
-    option_2.innerHTML = current[next];
+    options[next].innerHTML = current[next];
 
     next = opts.randomElement();
     index = opts.indexOf(next);
     opts.splice(index, 1);
 
-    option_3.innerHTML = current[next];
+    options[next].innerHTML = current[next];
 
     next = opts.randomElement();
     index = opts.indexOf(next);
     opts.splice(index, 1);
     
-    option_4.innerHTML = current[next];
+    options[next].innerHTML = current[next];
 
     document.getElementById('butRefresh').addEventListener('click', () => {
-        let options = [option_1, option_2, option_3, option_4];
+       let options = [option_1, option_2, option_3, option_4];
         let current = [];
-        let opts = [0,1,2,3];
+        let opts = ['0','1','2','3'];
 
         for(let i = 0;i < 4;i++){
             let font = fonts[Object.keys(fonts).randomElement()];
@@ -82,24 +82,28 @@
 
         let next = opts.randomElement();
         let index = opts.indexOf(next);
-        opts.splice(index);
+        opts.splice(index, 1);
+
         question.style.fontFamily = current[next];
-        option_1.innerHTML = next;
+        options[next].innerHTML = current[next];
 
         next = opts.randomElement();
         index = opts.indexOf(next);
-        opts.splice(index);
-        option_2.innerHTML = next;
+        opts.splice(index, 1);
+
+        options[next].innerHTML = current[next];
 
         next = opts.randomElement();
         index = opts.indexOf(next);
-        opts.splice(index);
-        option_3.innerHTML = next;
+        opts.splice(index, 1);
+
+        options[next].innerHTML = current[next];
 
         next = opts.randomElement();
         index = opts.indexOf(next);
-        opts.splice(index);
-        option_4.innerHTML = next;
+        opts.splice(index, 1);
+        
+        options[next].innerHTML = current[next];
     });
 })();
 
