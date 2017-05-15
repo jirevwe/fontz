@@ -248,7 +248,7 @@ header {
 .toast__msg {
   width: 250px;
   min-height: 50px;
-  background: rgba(0, 0, 0, 0.9);
+  background: orangered;
   color: #fff;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -632,7 +632,7 @@ b i a {
 
 .headerButton {
     width: 24px;
-    margin-right: 16px;
+    margin-right: 0px;
     overflow: hidden;
     opacity: 1;
     -webkit-transition: opacity 0.333s cubic-bezier(0, 0, 0.21, 1);
@@ -644,4 +644,12 @@ b i a {
   
 #butRefresh {
     background: url(../images/refresh.svg) center center no-repeat; 
+}
+
+.centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -50px;
+  margin-left: -100px;
 }

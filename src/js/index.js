@@ -1,5 +1,49 @@
 (function () {
     document.addEventListener('contextmenu', event => event.preventDefault());
+    
+    let score = 0, highscore = 0, progress = 0, max = 5;
+    //username
+    idbKeyval.get('username')
+    .then((user) => {
+        if(user !== undefined){
+            document.getElementById('username').innerHTML = `username: ${user}`;
+        }
+    })
+    .catch((error) => {
+        console.log(error);
+    });
+
+    //score
+    idbKeyval.get('high-score')
+    .then((score) => {
+        highscore = score;
+    })
+    .catch((error) => {
+        console.log(error);
+    });
+
+    let chooseFont = function (id) {
+        let element = document.getElementById(id);
+        let text = document.getElementById('question');
+        
+        ++progress;
+        document.getElementById('progress').innerHTML = `Progress: ${progress}/${max}`;
+
+        if(text.style.fontFamily.replace(/"/g, '') === element.innerHTML)
+        {
+            ++score;
+            toast('Correct', 1500);
+            document.getElementById('score').innerHTML = `Score: ${score}`;
+
+            let event = new Event('click');
+            document.getElementById('butRefresh').dispatchEvent(event);
+        }else{
+            toast('wrong', 1500);
+
+            let event = new Event('click');
+            document.getElementById('butRefresh').dispatchEvent(event);
+        }
+    }
 
     Array.prototype.randomElement = function () {
         return this[Math.floor(Math.random() * this.length)];
@@ -65,6 +109,22 @@
     
     options[next].innerHTML = current[next];
 
+    document.getElementById('one').addEventListener('click', (one) => {
+        chooseFont('one');
+    });
+
+    document.getElementById('two').addEventListener('click', () => {
+        chooseFont('two');
+    });
+
+    document.getElementById('three').addEventListener('click', () => {
+        chooseFont('three');
+    });
+
+    document.getElementById('four').addEventListener('click', () => {
+        chooseFont('four');
+    });
+
     document.getElementById('butRefresh').addEventListener('click', () => {
        let options = [option_1, option_2, option_3, option_4];
         let current = [];
@@ -108,17 +168,3 @@
         options[next].innerHTML = current[next];
     });
 })();
-
-let getColor = function (id) {
-    let element = document.getElementById(id);
-    let text = document.getElementById('question');
-
-    if(text.style.fontFamily.replace(/"/g, '') === element.innerHTML)
-    {
-        toast('Correct', 1500);
-        var event = new Event('click');
-        document.getElementById('butRefresh').dispatchEvent(event);
-    }else{
-        toast('wrong', 1500);
-    }
-}

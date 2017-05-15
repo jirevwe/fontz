@@ -2,7 +2,7 @@
     "name": "Font Game",
     "short_name": "Fonts Game",
     "description": "Guess the fonts",
-    "start_url": "./",
+    "start_url": "index.html",
     "display": "standalone",
     "orientation": "portrait",
     "background_color": "#ff6600",

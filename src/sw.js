@@ -3,17 +3,18 @@ importScripts('./js/sw-toolbox/sw-toolbox.js');
 const cacheFiles = [
     './',
     './index.html',
+    './choose.html',
 
     './js/hn.js',
     './js/app.js',
     './js/toast.js',
-    './js/fetch.js',
+    './js/index.js',
+    './js/globals.js',
     './js/offline.js',
     './js/jquery.min.js',
     './js/idb-keyval.js',
     './js/bootstrap.min.js',
 
-    './css/news.css',
     './css/style.css',
     './css/quiz.css',
     './css/bootstrap.min.css',
