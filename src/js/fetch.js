@@ -1,4 +1,6 @@
 (function () {
+    document.addEventListener('contextmenu', event => event.preventDefault());
+
     Array.prototype.randomElement = function () {
         return this[Math.floor(Math.random() * this.length)];
     }
@@ -114,6 +116,8 @@ let getColor = function (id) {
     if(text.style.fontFamily.replace(/"/g, '') === element.innerHTML)
     {
         toast('Correct', 1500);
+        var event = new Event('click');
+        document.getElementById('butRefresh').dispatchEvent(event);
     }else{
         toast('wrong', 1500);
     }
