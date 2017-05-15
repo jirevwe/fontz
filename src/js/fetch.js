@@ -15,9 +15,33 @@
         'poiret-one': 'Poiret One'
     };
 
+    let question = document.getElementById('question');
 
-    let text = document.getElementById('question');
-    text.style.fontFamily = fonts[Object.keys(fonts).randomElement()];
+    let option_1 = document.getElementById('one');
+    let option_2 = document.getElementById('two');
+    let option_3 = document.getElementById('three');
+    let option_4 = document.getElementById('four');
+
+    // let current = [];
+    // while(current.length < 4){
+    //     current.push(fonts[Object.keys(fonts).randomElement()]);
+    // }
+
+    question.style.fontFamily = fonts[Object.keys(fonts).randomElement()];
+
+    option_1.innerHTML = fonts[Object.keys(fonts).randomElement()];
+    option_2.innerHTML = fonts[Object.keys(fonts).randomElement()];
+    option_3.innerHTML = fonts[Object.keys(fonts).randomElement()];
+    option_4.innerHTML = fonts[Object.keys(fonts).randomElement()];
+
+    document.getElementById('butRefresh').addEventListener('click', () => {
+        question.style.fontFamily = fonts[Object.keys(fonts).randomElement()];
+
+        option_1.innerHTML = fonts[Object.keys(fonts).randomElement()];
+        option_2.innerHTML = fonts[Object.keys(fonts).randomElement()];
+        option_3.innerHTML = fonts[Object.keys(fonts).randomElement()];
+        option_4.innerHTML = fonts[Object.keys(fonts).randomElement()];
+    });
 })();
 
 let fonts = {
@@ -51,9 +75,13 @@ let getColor = function (id) {
     let element = document.getElementById(id);
     // console.log(element.classList[1]);
     let text = document.getElementById('question');
-    if(text.style.fontFamily.replace(/"/g, '') === fonts[element.classList[1]])
+    console.log(element.innerHTML);
+    if(text.style.fontFamily.replace(/"/g, '') === element.innerHTML)
     {
-        location = 'index.html';
+        toast('Correct', 1500);
+        // location = 'index.html';
+    }else{
+        toast('wrong', 1500);
     }
     // console.log(text.style.fontFamily.replace('"', '').replace('"', ''), fonts[element.classList[1]]);
     // console.log(text.style.fontFamily.replace('"', '').replace('"', '') === fonts[element.classList[1]]);
