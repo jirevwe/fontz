@@ -15,7 +15,7 @@
         .then((u) => {
             window.user = u;
             console.log(user);
-            toast('saved');
+            toast('saved', { time: 1500, color: '#303030' });
             setTimeout(() => { location = 'index.html'; }, 1000);
         })
         .catch((error) => {

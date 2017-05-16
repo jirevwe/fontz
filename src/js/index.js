@@ -52,13 +52,13 @@
         
         if(text.style.fontFamily.replace(/"/g, '').replace(/'/g, '') === element.innerHTML) {
             ++score;
-            toast('Correct', 1500);
+            toast('Correct', { time: 1500, color: '#00F' });
             document.getElementById('score').innerHTML = `Score: ${score}`;
 
             let event = new Event('click');
             document.getElementById('butRefresh').dispatchEvent(event);
         }else{
-            toast('wrong', 1500);
+            toast('wrong', { time: 1500, color: '#F00' });
 
             let event = new Event('click');
             document.getElementById('butRefresh').dispatchEvent(event);
