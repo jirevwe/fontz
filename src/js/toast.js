@@ -1,31 +1,22 @@
 (function (exports) {
-  'use strict';
+	'use strict';
 
-  var toastContainer = document.querySelector('.toast__container');
+	//To show notification
+	function toast(msg, options) {
+		if (!msg) return;
 
-  //To show notification
-  function toast(msg, options) {
-    if (!msg) return;
+		let toastContainer = document.getElementById('toast');
 
-    options = options || 3000; //3 seconds
+		options = options || 3000; //3 seconds
 
-    var toastMsg = document.createElement('div');
+		toastContainer.innerHTML = msg;
+		toastContainer.classList.remove('toast__msg--hide');
 
-    toastMsg.className = 'toast__msg';
-    toastMsg.textContent = msg;
+		//Show toast for 3secs and hide it
+		setTimeout(function () {
+			toastContainer.classList.add('toast__msg--hide');
+		}, options);
+	}
 
-    toastContainer.appendChild(toastMsg);
-
-    //Show toast for 3secs and hide it
-    setTimeout(function () {
-      toastMsg.classList.add('toast__msg--hide');
-    }, options);
-
-    //Remove the element after hiding
-    toastMsg.addEventListener('transitionend', function (event) {
-      event.target.parentNode.removeChild(event.target);
-    });
-  }
-
-  exports.toast = toast; //Make this method available in global
+	exports.toast = toast; //Make this method available in global
 })(typeof window === 'undefined' ? module.exports : window);

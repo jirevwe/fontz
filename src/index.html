@@ -25,10 +25,6 @@
   <meta property="og:image" content="/image/logo.png">
   <meta property="og:site_name" content="Fontz">
   <meta property="og:url" content="https://hacker-news-pwa.herokuapp.com/">
-
-  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-  <meta name="description" content="">
-  <meta name="author" content="Raymond Tukpe">
   <title>Fontz</title>
 
   <link href="https://fonts.googleapis.com/css?family=Archivo+Black|Droid+Serif|Hammersmith+One|Indie+Flower|Lobster|Open+Sans|Pacifico|Poiret+One|Roboto"
@@ -73,7 +69,9 @@
         </footer>
       </div>
       <!-- Toast msg's  -->
-      <div class="toast__container"></div>
+      <div class="toast__container">
+        <div id="toast" class="toast__msg toast__msg--hide">You are online...</div>
+      </div>
     </div>
   </div>
   <!-- /container -->
@@ -82,7 +80,6 @@
   <script src="/js/bootstrap.min.js"></script>
   <script src="/js/idb-keyval.js"></script>
   <script src="/js/offline.js"></script>
-  <script src="/js/globals.js"></script>
   <script src="/js/toast.js"></script>
   <script src="/js/index.js"></script>
   <script src="/js/hn.js"></script>

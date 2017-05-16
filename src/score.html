@@ -26,6 +26,7 @@
     <meta property="og:image" content="/image/logo.png">
     <meta property="og:site_name" content="Fontz">
     <meta property="og:url" content="https://hacker-news-pwa.herokuapp.com/">
+
     <title>Fontz</title>
 
     <link href="https://fonts.googleapis.com/css?family=Archivo+Black|Droid+Serif|Hammersmith+One|Indie+Flower|Lobster|Open+Sans|Pacifico|Poiret+One|Roboto"
@@ -51,11 +52,11 @@
         </div>
 
         <div class="app__content">
-            <div class=" centered">
-                <input type="text" id="username" class="form-control" placeholder="Username" name="username" style="margin-bottom: 5px;"
-                />
-                <button id="choose" name="choose" class="btn-success form-control"> Continue </button>
+            <div class="jumbotron">
+                <p id="final-score" style="text-align: center; font-size: 48px; font-weight: 500;">0</p>
             </div>
+            <button id="choose" name="choose" onclick="choose()" class="btn-success form-control"> Continue </button>
+
             <!-- Toast msg's  -->
             <div class="toast__container">
                 <div id="toast" class="toast__msg toast__msg--hide">You are online...</div>

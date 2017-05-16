@@ -1,11 +1,14 @@
 (function () {
-    document.addEventListener('contextmenu', event => event.preventDefault());
+    // document.addEventListener('contextmenu', event => event.preventDefault());
     
     let score = 0, highscore = 0, progress = 0, max = 5;
     //username
     idbKeyval.get('username')
     .then((user) => {
-        if(user !== undefined){
+        if(user === undefined || user === ''){
+            location = 'choose.html';
+        }
+        else{
             document.getElementById('username').innerHTML = `username: ${user}`;
         }
     })
@@ -22,15 +25,32 @@
         console.log(error);
     });
 
+    let fonts = {
+        'roboto': 'Roboto',
+        'open-sans': 'Open Sans',
+        'droid-serif': 'Droid Serif',
+        'indie-flower': 'Indie Flower',
+        'lobster': 'Lobster',
+        'pacifico': 'Pacifico',
+        'archivo-black': 'Archivo Black',
+        'hammersmith-one': 'Hammersmith One',
+        'poiret-one': 'Poiret One'
+    };
+
     let chooseFont = function (id) {
         let element = document.getElementById(id);
         let text = document.getElementById('question');
         
         ++progress;
         document.getElementById('progress').innerHTML = `Progress: ${progress}/${max}`;
+        if(progress >= max){
+            // location = 'score.html'; //we're done wuth the game and now we move to the score page...
+        }
 
-        if(text.style.fontFamily.replace(/"/g, '') === element.innerHTML)
-        {
+        console.log(text.style.fontFamily.replace(/"/g, '').replace(/'/g, ''), element.innerHTML);
+        console.log(text.style.fontFamily.replace(/"/g, '').replace(/'/g, '') === element.innerHTML);
+        
+        if(text.style.fontFamily.replace(/"/g, '').replace(/'/g, '') === element.innerHTML) {
             ++score;
             toast('Correct', 1500);
             document.getElementById('score').innerHTML = `Score: ${score}`;
@@ -48,18 +68,6 @@
     Array.prototype.randomElement = function () {
         return this[Math.floor(Math.random() * this.length)];
     }
-
-    let fonts = {
-        'roboto': 'Roboto',
-        'open-sans': 'Open Sans',
-        'droid-serif': 'Droid Serif',
-        'indie-flower': 'Indie Flower',
-        'lobster': 'Lobster',
-        'pacifico': 'Pacifico',
-        'archivo-black': 'Archivo Black',
-        'hammersmith-one': 'Hammersmith One',
-        'poiret-one': 'Poiret One'
-    };
 
     let question = document.getElementById('question');
 
