@@ -2,7 +2,7 @@
 	'use strict';
 
 	//To show notification
-	function toast(msg, options) {
+	function toast(msg, options, callback) {
 		if (!msg) return;
 
 		let toastContainer = document.getElementById('toast');
@@ -16,6 +16,8 @@
 		//Show toast for 3secs and hide it
 		setTimeout(function () {
 			toastContainer.classList.add('toast__msg--hide');
+			if (callback !== undefined)
+				callback();
 		}, options.time);
 	}
 

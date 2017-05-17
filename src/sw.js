@@ -7,6 +7,7 @@ const cacheFiles = [
 
     './js/hn.js',
     './js/app.js',
+    './js/score.js',
     './js/toast.js',
     './js/index.js',
     './js/globals.js',
@@ -23,7 +24,7 @@ const cacheFiles = [
     './images/push-off.png',
     './images/push-on.png',
 
-    'https://fonts.googleapis.com/css?family=Archivo+Black|Droid+Serif|Hammersmith+One|Indie+Flower|Lobster|Open+Sans|Pacifico|Poiret+One|Roboto'
+    'https://fonts.googleapis.com/css?family=Archivo+Black|Droid+Serif|Hammersmith+One|Indie+Flower|Lobster|Open+Sans|Orbitron|Pacifico|Poiret+One|Roboto'
 ];
 
 // implements all the service worker functions
@@ -34,8 +35,4 @@ self.addEventListener('install', (event) => event.waitUntil(self.skipWaiting()))
 self.addEventListener('activate', (event) => event.waitUntil(self.clients.claim()));
 
 // Fetch events
-self.addEventListener('fetch', (event) => {
-    event.respondWith(
-        caches.match(event.request).then((response) => response || fetch(event.request))
-    );
-});
+self.addEventListener('fetch', (event) => { event.respondWith(caches.match(event.request).then((response) => response || fetch(event.request))); });

@@ -1,29 +1,29 @@
 (function () {
     // document.addEventListener('contextmenu', event => event.preventDefault());
-    
+
     let score = 0, highscore = 0, progress = 0, max = 5;
     //username
     idbKeyval.get('username')
-    .then((user) => {
-        if(user === undefined || user === ''){
-            location = 'choose.html';
-        }
-        else{
-            document.getElementById('username').innerHTML = `username: ${user}`;
-        }
-    })
-    .catch((error) => {
-        console.log(error);
-    });
+        .then((user) => {
+            if (user === undefined || user === '') {
+                location = 'choose.html';
+            }
+            else {
+                document.getElementById('username').innerHTML = `username: ${user}`;
+            }
+        })
+        .catch((error) => {
+            console.log(error);
+        });
 
     //score
     idbKeyval.get('high-score')
-    .then((score) => {
-        highscore = score;
-    })
-    .catch((error) => {
-        console.log(error);
-    });
+        .then((score) => {
+            highscore = score;
+        })
+        .catch((error) => {
+            console.log(error);
+        });
 
     let fonts = {
         'roboto': 'Roboto',
@@ -34,31 +34,47 @@
         'pacifico': 'Pacifico',
         'archivo-black': 'Archivo Black',
         'hammersmith-one': 'Hammersmith One',
-        'poiret-one': 'Poiret One'
+        'poiret-one': 'Poiret One',
+        'orbitron': 'Orbitron'
     };
 
     let chooseFont = function (id) {
         let element = document.getElementById(id);
         let text = document.getElementById('question');
-        
+
         ++progress;
         document.getElementById('progress').innerHTML = `Progress: ${progress}/${max}`;
-        if(progress >= max){
-            // location = 'score.html'; //we're done wuth the game and now we move to the score page...
-        }
 
-        console.log(text.style.fontFamily.replace(/"/g, '').replace(/'/g, ''), element.innerHTML);
-        console.log(text.style.fontFamily.replace(/"/g, '').replace(/'/g, '') === element.innerHTML);
-        
-        if(text.style.fontFamily.replace(/"/g, '').replace(/'/g, '') === element.innerHTML) {
+        if (text.style.fontFamily.replace(/"/g, '').replace(/'/g, '') === element.innerHTML) {
             ++score;
-            toast('Correct', { time: 1500, color: '#00F' });
+
+            toast('Correct', { time: 1500, color: '#00F' }, () => {
+                if (progress >= max) {
+                    idbKeyval.set('score', score)
+                        .then((score) => {
+                            location = 'score.html';
+                        })
+                        .catch((error) => {
+                            console.log(error);
+                        });
+                }
+            });
             document.getElementById('score').innerHTML = `Score: ${score}`;
 
             let event = new Event('click');
             document.getElementById('butRefresh').dispatchEvent(event);
-        }else{
-            toast('wrong', { time: 1500, color: '#F00' });
+        } else {
+            toast('wrong', { time: 1500, color: '#F00' }, () => {
+                if (progress >= max) {
+                    idbKeyval.set('score', score)
+                        .then((score) => {
+                            location = 'score.html';
+                        })
+                        .catch((error) => {
+                            console.log(error);
+                        });
+                }
+            });
 
             let event = new Event('click');
             document.getElementById('butRefresh').dispatchEvent(event);
@@ -78,15 +94,15 @@
 
     let options = [option_1, option_2, option_3, option_4];
     let current = [];
-    let opts = ['0','1','2','3'];
+    let opts = ['0', '1', '2', '3'];
 
-    for(let i = 0;i < 4;i++){
+    for (let i = 0; i < 4; i++) {
         let font = fonts[Object.keys(fonts).randomElement()];
-        while (true){
-            if (current.indexOf(font) == -1){
+        while (true) {
+            if (current.indexOf(font) == -1) {
                 current.push(font);
                 break;
-            }else{
+            } else {
                 font = fonts[Object.keys(fonts).randomElement()];
             }
         }
@@ -114,7 +130,7 @@
     next = opts.randomElement();
     index = opts.indexOf(next);
     opts.splice(index, 1);
-    
+
     options[next].innerHTML = current[next];
 
     document.getElementById('one').addEventListener('click', (one) => {
@@ -134,17 +150,17 @@
     });
 
     document.getElementById('butRefresh').addEventListener('click', () => {
-       let options = [option_1, option_2, option_3, option_4];
+        let options = [option_1, option_2, option_3, option_4];
         let current = [];
-        let opts = ['0','1','2','3'];
+        let opts = ['0', '1', '2', '3'];
 
-        for(let i = 0;i < 4;i++){
+        for (let i = 0; i < 4; i++) {
             let font = fonts[Object.keys(fonts).randomElement()];
-            while (true){
-                if (current.indexOf(font) == -1){
+            while (true) {
+                if (current.indexOf(font) == -1) {
                     current.push(font);
                     break;
-                }else{
+                } else {
                     font = fonts[Object.keys(fonts).randomElement()];
                 }
             }
@@ -172,7 +188,7 @@
         next = opts.randomElement();
         index = opts.indexOf(next);
         opts.splice(index, 1);
-        
+
         options[next].innerHTML = current[next];
     });
 })();
