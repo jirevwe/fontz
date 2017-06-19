@@ -1,4 +1,4 @@
-div > button{
+div>button {
     margin-bottom: 5px;
 }
 
@@ -20,19 +20,19 @@ button.droid-serif {
     font-family: 'Droid Serif', serif;
 }
 
-button.indie-flower{
+button.indie-flower {
     margin-bottom: 5px;
     /*color: purple;*/
     font-family: 'Indie Flower', cursive;
 }
 
-button.lobster{
+button.lobster {
     margin-bottom: 5px;
     /*color: yellow;*/
     font-family: 'Lobster', cursive;
 }
 
-button.pacifico{
+button.pacifico {
     margin-bottom: 5px;
     /*color: cyan;*/
     font-family: 'Pacifico', cursive;
